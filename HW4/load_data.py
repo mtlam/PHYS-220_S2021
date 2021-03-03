@@ -6,7 +6,7 @@ def loadM5(max_probability=95):
     retval_I = list()
     ID_list = list()
     temp = [0,0]
-    FILE = open('M5_1.dat','r')
+    FILE = open('./M5_1.dat','r')
     lines = FILE.readlines()[54:3127]
     for i in range(len(lines)):
         if len(lines[i]) < 2 or lines[i][0:2] != '15':
@@ -42,7 +42,7 @@ def loadM5(max_probability=95):
                     temp[1] = float(I)
                 ID_list.append(ID)
     FILE.close()
-    FILE = open('M5_2.dat','r')
+    FILE = open('./M5_2.dat','r')
     lines = FILE.readlines()[39:10447]
     for i in range(len(lines)):
         splitline = lines[i].strip().split()
@@ -53,7 +53,7 @@ def loadM5(max_probability=95):
 
     FILE.close()
 
-    FILE = open('M5_3.dat','r') #relatively useless
+    FILE = open('./M5_3.dat','r') #relatively useless
     lines = FILE.readlines()[47:178]
     for i in range(len(lines)):
         splitline = lines[i].strip().split()
@@ -74,7 +74,7 @@ def loadM5(max_probability=95):
 def loadM45(max_probability=95):
     retval_V = list()
     retval_I = list()
-    FILE = open('M45.dat','r')
+    FILE = open('./M45.dat','r')
     lines = FILE.readlines()[11:3289]
     for i in range(len(lines)):
         splitline = lines[i].strip().split()
@@ -94,7 +94,7 @@ def loadM45(max_probability=95):
 def loadM67(max_probability=95):
     retval_V = list()
     retval_I = list()
-    FILE = open('M67.dat','r')
+    FILE = open('./M67.dat','r')
     lines = FILE.readlines()[47:2456]
     for i in range(len(lines)):
         splitline = lines[i].replace('       ',' @ ').strip().split()
@@ -111,7 +111,7 @@ def loadM67(max_probability=95):
 
 
 def loadMS(age):
-    data = np.loadtxt('outputiso.dat')
+    data = np.loadtxt('./outputiso.dat')
     data = np.transpose(data)
     inds = np.where(np.logical_and(np.abs(data[0]-age)<0.001,data[4]<10))[0] #M<10 Msun
     retval_V = data[9][inds]
@@ -121,40 +121,3 @@ def loadMS(age):
 
 def loadZAMS():
     return loadMS(age=7.0)
-
-    retval_V=list()
-    retval_I=list()
-    '''
-    data=np.loadtxt('output.dat')
-    data=np.transpose(data)
-    inds=np.where(data[1]==6.0)[0]
-    retval_V=data[10][inds]
-    retval_I=data[12][inds]
-    return retval_V,retval_I
-    '''
-    data=np.loadtxt('outputiso.dat')
-    data=np.transpose(data)
-    inds=np.where(np.logical_and(data[0]==7.0,data[4]<10))[0]
-    retval_V=data[9][inds]
-    retval_I=data[11][inds]
-    return retval_V,retval_I
-
-
-
-    FILE=open('isocsummz0.dat','r')
-
-    lines=FILE.readlines()
-    for line in lines:
-        if line[0]=='#':
-            continue
-        splitline=line.strip().split()
-        if splitline[-1]=='TO':
-            V=float(splitline[6]) #this is absolute magnitude
-            I=V-float(splitline[9])
-            retval_V.append(V)
-            retval_I.append(I)
-
-
-
-    FILE.close()
-    return np.array(retval_V),np.array(retval_I)
