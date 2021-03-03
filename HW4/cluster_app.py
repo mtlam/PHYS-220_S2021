@@ -17,7 +17,19 @@ apptitle = 'Star Clusters'
 st.set_page_config(page_title=apptitle, page_icon=":sparkles:")
 
 
-st.markdown("## HW\#4")
+st.markdown("## HW\#4: The Age of Stellar Clusters")
+
+st.markdown("""
+Theoretical models of stellar evolution can predict the color index and absolute magnitude of a star of a given mass during its lifetime on the main sequence and beyond. A star remains on the main sequence for a relatively long time in a state of stability; other phases in a star's lifetime are more rapid. Ignoring the very rapid early stages of the star's life before it reaches the main sequence, we can consider the color-magnitude main sequence established by theoretical models along with observations as the *zero-age main sequence*, or ZAMS. This tells us the color and magnitude of a star right as it is born. A time scale can be associated with the ZAMS, this "age" is the length of time a star of a given mass will remain in its stable main sequence phase before it evolves off the ZAMS, i.e., the "lifetime" of the star.
+
+Using the tools to the left, you can
+
+1. select a cluster to analyze,
+2. toggle the ZAMS on or off, and
+3. shift the ZAMS by a certain magnitude. A shift of 0 means that the apparent magnitude equals the absolute magnitude.
+
+When hovering over the panel below, in the top right toolbar, you may find it useful to click "toggle spike lines" to help guide your eye to the axes, though hovering over a data point will also show its x and y values. If you select "compare data on hover" then the x value of your mouse cursor will be shown on the x axis.
+""")
 
 M5 = "Aethon Cluster [M5]"# Globular Cluster in Serpens
 M45 = "Hawking Eta Cluster [M45]" #Pleiades
@@ -99,4 +111,4 @@ fig.update_layout(
 
 st.plotly_chart(fig)
 
-st.markdown("Written by Michael T. Lam, original Java applet by Terry Herter et al. See data files for data references.")
+st.markdown("Written by Michael T. Lam, original Java applet by Terry Herter et al. See data files for paper references.")
