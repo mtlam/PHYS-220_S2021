@@ -6,7 +6,7 @@ def loadM5(max_probability=95):
     retval_I = list()
     ID_list = list()
     temp = [0,0]
-    FILE = open('data/M5_1.dat','r')
+    FILE = open('HW4/data/M5_1.dat','r')
     lines = FILE.readlines()[54:3127]
     for i in range(len(lines)):
         if len(lines[i]) < 2 or lines[i][0:2] != '15':
@@ -42,7 +42,7 @@ def loadM5(max_probability=95):
                     temp[1] = float(I)
                 ID_list.append(ID)
     FILE.close()
-    FILE = open('data/M5_2.dat','r')
+    FILE = open('HW4/data/M5_2.dat','r')
     lines = FILE.readlines()[39:10447]
     for i in range(len(lines)):
         splitline = lines[i].strip().split()
@@ -53,7 +53,7 @@ def loadM5(max_probability=95):
 
     FILE.close()
 
-    FILE = open('data/M5_3.dat','r') #relatively useless
+    FILE = open('HW4/data/M5_3.dat','r') #relatively useless
     lines = FILE.readlines()[47:178]
     for i in range(len(lines)):
         splitline = lines[i].strip().split()
@@ -74,7 +74,7 @@ def loadM5(max_probability=95):
 def loadM45(max_probability=95):
     retval_V = list()
     retval_I = list()
-    FILE = open('data/M45.dat','r')
+    FILE = open('HW4/data/M45.dat','r')
     lines = FILE.readlines()[11:3289]
     for i in range(len(lines)):
         splitline = lines[i].strip().split()
@@ -94,7 +94,7 @@ def loadM45(max_probability=95):
 def loadM67(max_probability=95):
     retval_V = list()
     retval_I = list()
-    FILE = open('data/M67.dat','r')
+    FILE = open('HW4/data/M67.dat','r')
     lines = FILE.readlines()[47:2456]
     for i in range(len(lines)):
         splitline = lines[i].replace('       ',' @ ').strip().split()
@@ -111,7 +111,7 @@ def loadM67(max_probability=95):
 
 
 def loadMS(age):
-    data = np.loadtxt('data/outputiso.dat')
+    data = np.loadtxt('HW4/data/outputiso.dat')
     data = np.transpose(data)
     inds = np.where(np.logical_and(np.abs(data[0]-age)<0.001,data[4]<10))[0] #M<10 Msun
     retval_V = data[9][inds]
